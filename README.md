@@ -29,3 +29,15 @@ O GitHub Pages não é ativado automaticamente por estes arquivos: quando permit
 ## Direitos
 
 Os arquivos de marcas de terceiros permanecem pertencentes aos respectivos titulares. O uso das imagens, a oferta e a retransmissão de conteúdo requerem as permissões e licenças aplicáveis.
+
+
+## Revisão visual v3
+- CTA final restaurado para “Sua próxima experiência começa aqui.”
+- Programação: quatro ícones SVG semânticos; Destaques: claquete, troféu e câmera.
+- Ícones de “+” em SVG centralizados e não selecionáveis.
+- MaxPlay: estrutura integral do bloco V6 (arte, brilhos, selos e dois botões), com ícone fornecido via URL e fallback vetorial local.
+- Planos: Mensal, Trimestral, Semestral e Teste gratuito nessa ordem; quatro colunas no desktop, duas no tablet e uma no celular.
+- O número do WhatsApp continua pendente em assets/config.js.
+- A imagem externa MaxPlay requer conexão; a arte local é fallback derivado da logo anteriormente enviada.
+
+- Descontos exibidos como comparações com pagamentos mensais: trimestral R$85 (R$5 de economia); semestral R$160 (R$20 de economia).
