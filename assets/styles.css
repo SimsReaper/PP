@@ -222,7 +222,7 @@ html{scroll-padding-top:calc(var(--plum-header-height) + 12px)}
   position:absolute;inset:50% auto auto 50%;
   display:block;width:92%;height:92%;max-width:none;
   object-fit:contain;pointer-events:none;user-select:none;
-  transform:translate(-50%,-50%) rotate(-8deg) scale(1.08);
+  transform:translate(-50%,-50%) rotate(0deg) scale(1.09);
   filter:drop-shadow(0 9px 15px rgba(254,162,2,.19));
 }
 .maxplayer-icon-local{z-index:1;opacity:1}
