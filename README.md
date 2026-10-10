@@ -17,7 +17,8 @@ Landing page estática responsiva para a marca PlumPlay.
 - `assets/styles.css`: estilos e scrollbar Fluent inspirada no Edge, em laranja.
 - `assets/app.js`: menu móvel e links de atendimento.
 - `assets/plumplay-logo.webp`: logo do PlumPlay fornecida pelo usuário.
-- `assets/maxplayer-logo.png`: logo Max Player fornecida pelo usuário, reamostrada para melhor nitidez.
+- `assets/maxplayer-logo.png`: logo original MaxPlayer enviada pelo usuário, preservada como referência.
+- `assets/maxplay-icon-fallback.svg`: símbolo laranja isolado da marca para exibição imediata se o ícone de alta resolução remoto não carregar.
 - `assets/streaming/*.webp`: **as dez imagens enviadas pelo usuário**, ajustadas por recorte centrado proporcional, sem deformação.
 
 ## Hospedagem
@@ -32,7 +33,7 @@ Os arquivos de marcas de terceiros permanecem pertencentes aos respectivos titul
 
 
 ## Revisão visual v3
-- CTA final restaurado para “Sua próxima experiência começa aqui.”
+- CTA final restaurado para “Seu próximo programa começa aqui.”
 - Programação: quatro ícones SVG semânticos; Destaques: claquete, troféu e câmera.
 - Ícones de “+” em SVG centralizados e não selecionáveis.
 - MaxPlay: estrutura integral do bloco V6 (arte, brilhos, selos e dois botões), com ícone fornecido via URL e fallback vetorial local.
@@ -41,3 +42,8 @@ Os arquivos de marcas de terceiros permanecem pertencentes aos respectivos titul
 - A imagem externa MaxPlay requer conexão; a arte local é fallback derivado da logo anteriormente enviada.
 
 - Descontos exibidos como comparações com pagamentos mensais: trimestral R$85 (R$5 de economia); semestral R$160 (R$20 de economia).
+
+## Revisão v5 — responsividade e ícone diagonal
+- Seções principais com altura mínima da viewport disponível, conteúdo centrado verticalmente e expansão natural quando necessário; CTA final permanece no formato compacto aprovado.
+- Tamanhos de títulos/cards escaláveis para notebooks e monitores; sem rolagem horizontal involuntária.
+- Em `04 / APLICATIVO UTILIZADO`, o símbolo laranja ocupa visualmente o quadrado inclinado, sem a antiga compensação de rotação. A URL do ícone enviada pelo usuário é usada quando disponível, com SVG local visível imediatamente como reserva.

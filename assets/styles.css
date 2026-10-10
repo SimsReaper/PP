@@ -74,3 +74,172 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:'Manrope',system-ui,sans-serif}em{f
 /* Other cards keep a matching content baseline */
 .price-card .price-value{margin-bottom:6px}
 @media(max-width:540px){.price-savings{margin-top:0}.saving-badge{font-size:11px}}
+
+
+/* v4 — sections that really occupy the visible viewport, with balanced vertical spacing.
+   Use a minimum height, never a fixed one: content remains accessible on smaller/short screens. */
+:root{--plum-header-height:78px}
+html{scroll-padding-top:calc(var(--plum-header-height) + 12px)}
+.wrap{width:min(1520px,calc(100% - clamp(40px,6vw,144px)))}
+.hero,.section{min-height:calc(100svh - var(--plum-header-height))}
+.hero{padding-block:clamp(30px,5vh,76px);gap:clamp(24px,3vw,60px)}
+.section{
+  padding-block:clamp(48px,6.5vh,105px);
+  justify-content:center;
+}
+.section-heading{gap:clamp(25px,3vw,64px);margin-bottom:clamp(30px,4vh,55px)}
+.section-heading h2{font-size:clamp(42px,3.5vw,68px);line-height:1.14;letter-spacing:-.037em}
+.section-aside{font-size:clamp(14px,.92vw,18px);max-width:390px;line-height:1.75}
+.eyebrow{font-size:clamp(11px,.7vw,13px);margin-bottom:clamp(14px,2vh,24px)}
+
+/* Scale the visual weight of each component along with available monitor space. */
+.hero h1{font-size:clamp(53px,5vw,96px);letter-spacing:-.054em}
+.hero-copy>p{font-size:clamp(15px,1vw,19px);max-width:650px;line-height:1.75}
+.hero-art{height:clamp(390px,56svh,680px)}
+.main-logo{max-width:min(100%,620px)}
+.hero-points{font-size:clamp(11px,.82vw,15px)}
+.button{min-height:clamp(50px,3.5vw,59px);font-size:clamp(12px,.85vw,15px);padding-inline:clamp(20px,1.45vw,30px)}
+.content-grid,.special-grid,.device-grid{gap:clamp(14px,1.15vw,24px)}
+.info-card{min-height:clamp(285px,34svh,390px);padding:clamp(22px,1.85vw,36px)}
+.card-icon{height:clamp(66px,5.3vw,86px);min-width:clamp(66px,5.3vw,86px);margin-bottom:clamp(24px,4svh,48px)}
+.card-icon svg{height:clamp(34px,2.8vw,43px);width:clamp(34px,2.8vw,43px)}
+.info-card h3{font-size:clamp(18px,1.22vw,24px)}
+.info-card p{font-size:clamp(13px,.87vw,17px);line-height:1.7}
+.stream-grid{gap:clamp(12px,1vw,22px)}
+.stream-more{padding:clamp(19px,1.4vw,27px) clamp(22px,1.8vw,34px);gap:20px}
+.stream-more strong{font-size:clamp(15px,1vw,20px)}
+.stream-more p{font-size:clamp(12px,.84vw,16px)}
+.special-card{min-height:clamp(315px,35svh,435px);padding:clamp(25px,2vw,40px)}
+.special-symbol{height:clamp(68px,5vw,88px);width:clamp(68px,5vw,88px)}
+.special-symbol svg{height:clamp(34px,2.8vw,44px);width:clamp(34px,2.8vw,44px)}
+.special-card h3{font-size:clamp(20px,1.5vw,28px)}
+.special-card p{font-size:clamp(13px,.9vw,17px);line-height:1.75}
+.device{min-height:clamp(185px,23svh,285px);gap:8px;padding:18px 8px}
+.device>span{width:clamp(52px,4vw,66px);height:clamp(52px,4vw,66px)}
+.device>span svg{width:clamp(38px,3.25vw,52px);height:clamp(38px,3.25vw,52px)}
+.device strong{font-size:clamp(14px,1vw,19px)}
+.device small{font-size:clamp(12px,.83vw,16px)}
+.maxplayer-wrapper{gap:clamp(36px,5vw,95px);padding:clamp(40px,4.2vw,78px)}
+.maxplayer-art{min-height:clamp(355px,43svh,520px)}
+.maxplayer-mark{width:clamp(250px,21vw,345px);height:clamp(250px,21vw,345px);border-radius:clamp(52px,5vw,80px)}
+.maxplayer-copy h2{font-size:clamp(42px,3.5vw,67px);letter-spacing:-.036em}
+.maxplayer-copy>p:not(.kicker):not(.maxplayer-notice){font-size:clamp(14px,1vw,18px);line-height:1.75}
+.maxplayer-capabilities span{font-size:clamp(11px,.75vw,14px);padding:7px 12px}
+.maxplayer-actions .btn{min-height:clamp(47px,3.2vw,56px);font-size:clamp(12px,.8vw,15px);padding:0 clamp(16px,1.2vw,24px)}
+.price-layout{width:100%;max-width:none;gap:clamp(14px,1vw,23px)}
+.price-card{min-height:clamp(355px,41svh,460px);padding:clamp(22px,1.65vw,33px)}
+.price-top{font-size:clamp(10px,.72vw,13px)}
+.price-value{font-size:clamp(57px,5vw,88px)}
+.price-card>p{font-size:clamp(12px,.81vw,15px);line-height:1.65}
+.price-card .button{font-size:clamp(11px,.77vw,14px);min-height:52px}
+.pricing-footnote{max-width:none;font-size:clamp(11px,.77vw,14px);margin-top:clamp(19px,2.4vh,30px)}
+.faq-list summary{padding-block:clamp(24px,3.3vh,37px);font-size:clamp(15px,1vw,20px)}
+.faq-list details p{font-size:clamp(13px,.88vw,17px)}
+
+/* Preserve the previously approved compact final orange call-to-action. */
+.cta-section{min-height:310px;display:flex;align-items:center}
+
+/* Notebook: retain readable sizing and center the whole section, even when height is limited. */
+@media(max-width:1100px){
+  .wrap{width:calc(100% - 52px)}
+  .hero h1{font-size:clamp(45px,5.1vw,65px)}
+  .content-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .price-layout{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .info-card{min-height:255px}
+  .special-card{min-height:280px}
+  .maxplayer-wrapper{gap:30px;padding:40px}
+  .maxplayer-art{min-height:320px}
+  .maxplayer-mark{height:225px;width:225px;border-radius:48px}
+}
+@media(max-width:830px){
+  :root{--plum-header-height:78px}
+  .wrap{width:calc(100% - 42px)}
+  .hero,.section{min-height:calc(100svh - var(--plum-header-height))}
+  .hero{padding-block:clamp(38px,5vh,58px)}
+  .section{padding-block:clamp(48px,6vh,78px)}
+  .section-heading h2{font-size:clamp(36px,5.4vw,52px)}
+  .section-aside{font-size:14px}
+  .info-card{min-height:225px}
+  .special-card{min-height:270px}
+  .device{min-height:160px}
+  .maxplayer-wrapper{grid-template-columns:1fr;gap:20px}
+  .maxplayer-art{min-height:270px}
+  .maxplayer-mark{width:210px;height:210px}
+  .price-card{min-height:330px}
+}
+@media(max-width:540px){
+  :root{--plum-header-height:69px}
+  .wrap{width:calc(100% - 32px)}
+  .hero,.section{min-height:calc(100svh - var(--plum-header-height))}
+  .hero{padding-block:clamp(34px,4vh,48px)}
+  .hero-art{height:clamp(290px,42svh,380px)}
+  .section{padding-block:clamp(40px,5.5vh,62px)}
+  .section-heading h2{font-size:clamp(33px,8.4vw,40px)}
+  .content-grid,.special-grid,.stream-grid,.device-grid{gap:12px}
+  .info-card{min-height:185px;padding:21px}
+  .card-icon{height:62px;min-width:62px;margin-bottom:18px}
+  .card-icon svg{height:32px;width:32px}
+  .info-card h3{font-size:18px}
+  .info-card p{font-size:13px}
+  .special-card{min-height:225px;padding:23px}
+  .special-symbol{width:66px;height:66px}
+  .special-symbol svg{width:34px;height:34px}
+  .special-card h3{font-size:20px}
+  .special-card p{font-size:13px}
+  .device{min-height:140px}
+  .device strong{font-size:13px}
+  .device small{font-size:11px}
+  .device>span{width:44px;height:44px}
+  .device>span svg{width:32px;height:32px}
+  .maxplayer-wrapper{padding:28px 22px;gap:4px}
+  .maxplayer-art{min-height:235px}
+  .maxplayer-mark{height:176px;width:176px;border-radius:39px}
+  .maxplayer-copy h2{font-size:35px}
+  .maxplayer-copy>p:not(.kicker):not(.maxplayer-notice){font-size:14px}
+  .price-layout{grid-template-columns:1fr}
+  .price-card{min-height:325px;padding:24px}
+  .price-value{font-size:72px}
+  .price-card .button{font-size:12px}
+  .faq-list summary{font-size:14px;padding-block:22px}
+  .faq-list details p{font-size:12px}
+  .cta-section{min-height:310px;padding:32px 22px}
+}
+/* For narrow desktops and landscape screens the content is allowed to become taller than
+   a viewport instead of being clipped or overlapping adjacent sections. */
+@media(max-height:690px) and (min-width:831px){
+  .hero,.section{padding-block:38px}
+  .info-card{min-height:250px}
+  .special-card{min-height:260px}
+  .maxplayer-wrapper{padding:34px}
+  .maxplayer-art{min-height:300px}
+  .maxplayer-mark{height:230px;width:230px}
+  .price-card{min-height:335px}
+}
+
+/* v5 — MaxPlay emblem as the large, diagonal centerpiece of the v6 tile. */
+.maxplayer-mark{overflow:hidden;isolation:isolate;transform:rotate(-7deg)}
+.maxplayer-mark .maxplayer-icon{
+  position:absolute;inset:50% auto auto 50%;
+  display:block;width:92%;height:92%;max-width:none;
+  object-fit:contain;pointer-events:none;user-select:none;
+  transform:translate(-50%,-50%) rotate(-8deg) scale(1.08);
+  filter:drop-shadow(0 9px 15px rgba(254,162,2,.19));
+}
+.maxplayer-icon-local{z-index:1;opacity:1}
+.maxplayer-icon-remote{z-index:2;opacity:0;transition:opacity .2s ease}
+.maxplayer-mark.remote-loaded .maxplayer-icon-local{opacity:0}
+.maxplayer-mark.remote-loaded .maxplayer-icon-remote{opacity:1}
+/* Keep a large, vertically centered composition without cropping short/compact viewports. */
+@media (min-width:1101px){
+  .hero,.section{min-height:calc(100svh - var(--plum-header-height))}
+  .hero{align-content:center;align-items:center}
+  .section{display:flex;flex-direction:column;justify-content:center}
+  .section-heading{flex:none}
+}
+@media (max-width:1100px){
+ .section{display:flex;flex-direction:column;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.maxplayer-icon-remote{transition:none}}
+/* Constrain decorative glows to the page width; the ribbon remains internally scrollable on touch. */
+html{overflow-x:clip}
+.hero::before{inset:0}
