@@ -100,7 +100,7 @@ if(!viewport||!track)return;
 let paused=!motionOK,last=0, frame=0;
 const visibleItems=track.querySelectorAll('.platform-logo-item');
 function fitToWidth(){
- const w=viewport.clientWidth;const item=Math.max(146,Math.ceil((w+140)/9.55));
+ const w=viewport.clientWidth;const item=Math.max(146,Math.ceil((w+140)/8.55));
  track.style.setProperty('--platform-width',item+'px');
 }
 fitToWidth();window.addEventListener('resize',fitToWidth,{passive:true});

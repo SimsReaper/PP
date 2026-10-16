@@ -80,3 +80,10 @@ As imagens originais do GitHub e do MaxPlayer continuam remotas por padrão, com
 - O atalho “Teste gratuito de 4h” mantém `#teste` no endereço, mas centraliza a seção inteira em `#planos` exatamente como o botão “Conhecer planos”.
 - Corrige também a abertura direta de `index.html#teste` e a navegação de histórico, sem alterar estilos ou demais links.
 - Arquivo funcional modificado: `assets/app.js`.
+
+## v18.2 — plataformas compatíveis
+
+- Removido o cartão MAG Box / Infomir do carrossel de dispositivos. Permanecem nove plataformas distintas e seus links originais.
+- Recalibrada a largura dos itens para manter a rolagem circular, sem duplicar cartões.
+- Retirados o ajuste visual específico e o download da imagem MAG Box do script Windows. Agora são 19 recursos externos no baixador (10 marcas de streaming + 9 plataformas).
+- Sem alterações de preços, Instagram, outros blocos ou visual geral.

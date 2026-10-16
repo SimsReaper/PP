@@ -10,7 +10,6 @@ $platforms = [ordered]@{
  'windows'='https://maxplayer.tv/images/platforms/icon-windows.webp';
  'ios'='https://maxplayer.tv/images/platforms/icon-ios.webp';
  'android-mobile'='https://maxplayer.tv/images/store/googleplay-dark.webp';
- 'mag-box'='https://maxplayer.tv/images/platforms/icon-mag-box.webp';
  'apple-tv'='https://maxplayer.tv/images/platforms/icon-apple-tv.svg';
  'roku'='https://maxplayer.tv/images/platforms/icon-roku.webp'
 }
@@ -39,5 +38,5 @@ if ($records.Count) {
  foreach($r in $records){ $html=$html.Replace($r.Remote,$r.Local) }
  [IO.File]::WriteAllText($index,$html,[Text.UTF8Encoding]::new($false))
 }
-Write-Host "Download concluido. Imagens: $downloaded / 20; falhas: $failed"
+Write-Host "Download concluido. Imagens: $downloaded / $($stream.Count + $platforms.Count); falhas: $failed"
 Write-Host 'Os links que falharam continuam remotos no HTML. Abra index.html para testar.'
