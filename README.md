@@ -67,3 +67,10 @@ As imagens originais do GitHub e do MaxPlayer continuam remotas por padrão, com
 - `og:image` aponta para a logo atual MaxPrism em vez do logo antigo PlumPlay.
 - A proteção `Referrer-Policy: no-referrer` da v16 permanece, incluindo `_headers` e as metatags.
 - Permanecem intactos: identidade visual, ícones, imagens e preços de planos, Direct Instagram `@friendsjfas`, carrossel e mensagens de cópia.
+
+
+## v18 — altura do banner e proporção da marca
+- O banner principal agora ocupa no mínimo a altura visível abaixo da navbar (78px desktop, 69px celular), sem limite de 850px. Mantém centralização e expansão natural quando o conteúdo exigir mais espaço.
+- Removido `background:#051c40` do seletor `.site-brand img`; a marca tem fundo transparente.
+- Favicon PNG quadrado (512 × 512) e ICO com o símbolo laranja centralizado mantendo proporção original, sem esticar nem achatar.
+- Cabeçalho e rodapé usam o ícone quadrado proporcional com transparência.
