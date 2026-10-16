@@ -67,9 +67,9 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:'Manrope',system-ui,sans-serif}em{f
 @media(max-width:540px){.maxplayer-wrapper{padding:28px 22px;gap:4px}.maxplayer-art{min-height:235px}.maxplayer-mark{height:176px;width:176px;border-radius:39px}.maxplayer-copy h2{font-size:35px}.maxplayer-actions .btn{width:100%}.price-layout{grid-template-columns:1fr}.price-card{padding:24px}.price-value{font-size:72px}.cta-section{min-height:310px;padding:32px 22px;margin-bottom:60px}.cta-content .button{width:100%;margin-right:0}.section{min-height:100svh}}
 @media(prefers-reduced-motion:reduce){.maxplayer-actions .btn{transition:none}}
 
-/* Visual comparison with monthly plan: 3 × R$30 vs R$85, 6 × R$30 vs R$160 */
+/* Comparação transparente com mensalidades avulsas: 3 × R$ 30 = R$ 90; 6 × R$ 30 = R$ 180. */
 .price-savings{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:2px 0 7px;min-height:26px}
-.price-comparison{font-size:11px;color:#bea68a;text-decoration:line-through;text-decoration-thickness:1px}
+
 .saving-badge{font-size:10px;font-weight:800;line-height:1.2;color:#261707;background:linear-gradient(110deg,#ffbc45,#ffdc87);border-radius:999px;padding:6px 9px;white-space:nowrap}
 /* Other cards keep a matching content baseline */
 .price-card .price-value{margin-bottom:6px}
@@ -243,3 +243,411 @@ html{scroll-padding-top:calc(var(--plum-header-height) + 12px)}
 /* Constrain decorative glows to the page width; the ribbon remains internally scrollable on touch. */
 html{overflow-x:clip}
 .hero::before{inset:0}
+
+
+/* v8 — carrossel de plataformas, adaptado à identidade escura do MaxPrism. */
+.platforms-section{overflow:hidden;min-width:0}
+.platforms-section .section-heading{margin-inline:auto}
+.platforms-carousel{position:relative;width:100%;overflow:hidden;margin:clamp(28px,4vw,58px) auto 0;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%)}
+.platforms-marquee-track{display:flex;width:max-content;max-width:none;align-items:center;animation:platforms-flow 38s linear infinite;will-change:transform}
+.platforms-marquee-set{display:flex;flex:none;align-items:center}
+.platform-logo-item{width:clamp(132px,13.3vw,188px);min-width:clamp(132px,13.3vw,188px);height:108px;display:flex;align-items:center;justify-content:center;position:relative;
+  padding:17px 13px;border-radius:12px;isolation:isolate;outline-offset:-3px;text-decoration:none;cursor:pointer;
+  transition:background-color .25s ease}
+.platform-logo-item:hover,.platform-logo-item:focus-visible{background:rgba(255,182,59,.07)}
+.platform-logo-item img{position:absolute;inset:0;margin:auto;max-width:83%;max-height:66px;width:auto;height:auto;object-fit:contain;opacity:.55;filter:grayscale(1);transition:opacity .28s ease,filter .28s ease,transform .28s ease}
+.platform-logo-item:hover img,.platform-logo-item:focus-visible img{opacity:1;filter:grayscale(0);transform:scale(1.055)}
+.platform-logo-item:focus-visible{outline:2px solid #ffb939}
+.platform-logo-item .platform-fallback{color:#d0b995;font-weight:700;font-size:clamp(13px,1.1vw,16px);line-height:1.2;text-align:center}
+.platform-logo-item .platform-fallback:not([hidden]){display:block}
+.platform-logo-item:hover .platform-fallback,.platform-logo-item:focus-visible .platform-fallback{color:#ffbd63}
+.platform-logo-item [hidden]{display:none!important}
+.platforms-carousel:hover .platforms-marquee-track,.platforms-carousel:focus-within .platforms-marquee-track{animation-play-state:paused}
+.platforms-hint{text-align:center;color:#ad997f;font-size:12px;line-height:1.6;margin:18px auto 0}
+@keyframes platforms-flow{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:620px){.platform-logo-item{height:88px;min-width:138px;width:138px}.platform-logo-item img{max-height:54px}.platforms-hint{font-size:11px;padding-inline:12px}}
+@media(prefers-reduced-motion:reduce){
+  .platforms-carousel{overflow-x:auto;scrollbar-width:thin;-webkit-mask-image:none;mask-image:none}
+  .platforms-marquee-track{animation:none;will-change:auto}
+  .platforms-marquee-copy{display:none}
+  .platform-logo-item img{transition:none}
+  .platform-logo-item:hover img,.platform-logo-item:focus-visible img{transform:none}
+}
+
+
+/* MaxPrism v9 • White / navy / MaxPlayer orange • site overhaul */
+:root{color-scheme:light;--bg:#fff;--surface:#f6f9fd;--surface2:#edf3fa;--text:#071c3e;--muted:#52647c;--gold:#fea200;--amber:#ffb52d;--line:#dce5ee;--scroll:#f4a100;scrollbar-color:#f4a100 transparent}
+body{background:#fff;color:#071c3e}
+.header{background:rgba(255,255,255,.96);border-bottom:1px solid #e6ebf1;box-shadow:0 6px 24px rgba(6,28,59,.05)}
+.site-brand,.nav a,.header-cta{color:#061b3b}
+.site-brand img{object-fit:contain;background:#051c40;border-radius:9px}
+.nav a:hover,.nav a:focus-visible{color:#bd7400}
+.header-cta{border:0;background:#fea200;color:#051a3d;border-radius:10px;padding:10px 18px;box-shadow:0 8px 18px #fea20024}
+.header-cta:hover{background:#ffb529;border-color:transparent}
+.header-cta span{display:none}
+.menu-btn span{background:#071c3e}
+.gradient-text{background:linear-gradient(110deg,#ffa400,#ffbf48);color:transparent;-webkit-background-clip:text;background-clip:text}
+em{color:#de8a00}
+.hero.hero-fullbleed{min-height:min(850px,calc(100svh - 78px));width:100%;max-width:none;margin:0;padding:clamp(65px,8vw,110px) max(26px,calc((100vw - 1200px)/2));display:grid;grid-template-columns:1.03fr .97fr;gap:40px;align-items:center;color:#fff;position:relative;isolation:isolate;
+ background-image:linear-gradient(100deg,rgba(3,24,62,.92) 0%,rgba(3,24,62,.64) 56%,rgba(3,24,62,.16) 100%),linear-gradient(118deg,#03183e,#0d3778 74%,#133d72);
+ background-position:center center;background-size:cover;background-repeat:no-repeat;overflow:hidden}
+.hero.hero-fullbleed:before{display:none;content:none}
+.hero.hero-fullbleed:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(3,24,62,.12),transparent 75%)}
+.hero h1{color:#fff;letter-spacing:-.055em}
+.hero-copy>p,.hero-copy>p strong{color:#eff5ff}
+.hero .overline{color:#ffc95d}
+.hero .gradient-text{background-image:linear-gradient(110deg,#fea200,#ffdc8e)}
+.hero .button.ghost{border:1px solid rgba(255,255,255,.6);color:#fff;background:#ffffff13}
+.hero-points{color:#ebeffb}
+.hero-art{height:clamp(385px,42vw,540px);overflow:visible;isolation:isolate;display:grid;place-items:center}
+.hero-halo{display:none!important}
+.hero-art .main-logo{width:min(100%,485px);max-height:100%;height:100%;object-fit:contain;border-radius:0;mix-blend-mode:normal;filter:drop-shadow(0 15px 26px #001a4752)}
+.floating-label{background:#fff;color:#0a2d5d;border:1px solid #dce3ef;box-shadow:0 12px 34px #00143135;font-size:10px;padding:10px 14px;letter-spacing:1px;transform:none}
+.label-one{left:1%;top:26%}
+.label-two{right:0;bottom:19%;transform:none}
+.label-three{left:8%;bottom:11%;color:#b56d00}
+.ribbon{background:#03183e;border-color:#03183e}.ribbon-inner{color:#fff}.ribbon i{color:#fea200}
+.section{padding-block:clamp(80px,7.2vw,115px);min-height:auto;scroll-margin-top:90px}
+.section-heading h2,.special-card h3{color:#061c40}
+.section-aside,.info-card p,.stream-more p,.faq-list details p{color:#596a82}
+.eyebrow{color:#d28100}
+.info-card{background:#fff;border:1px solid #e3e9f1;box-shadow:0 12px 30px #081e3d09;min-height:256px}
+.info-card h3,.info-card strong{color:#092653}
+.card-icon{background:#fff7e7;color:#cd8000;border:1px solid #ffe0a4}
+.card-icon svg{color:#da8a00}
+#conteudos{background:#fff}
+#streaming{width:100%;max-width:none;padding-inline:max(26px,calc((100vw - 1200px)/2));background:#f4f8fc}
+.stream-grid{gap:14px}
+.stream-card{min-height:126px;border:1px solid #e4e9f2;border-radius:14px;background:white;box-shadow:0 10px 25px #102b540b;display:grid;place-items:center;padding:12px}
+.stream-card img{aspect-ratio:620/290;max-height:175px;object-fit:contain;background:white;border-radius:8px}
+.stream-card:hover{border-color:#f8b442;box-shadow:0 15px 25px #102b5416}
+.stream-more{border:1px solid #f6dba5;background:#fffaf0;color:#07234b}
+.stream-more p{color:#596a82}
+.fineprint{color:#596a82}
+.special-section{background:#fff}
+.special-card{background:#f8fafe;border:1px solid #e1e7ef}
+.special-card p{color:#596b81}
+.special-symbol{color:#c78000}
+.platforms-section{background:#f5f8fd;padding-block:clamp(75px,8vw,115px)}
+.platforms-section .section-heading{max-width:1200px;margin:0 auto 35px}
+.platforms-carousel{overflow-x:auto;overflow-y:hidden;width:100%;max-width:none;scrollbar-width:none;overscroll-behavior-inline:contain;touch-action:pan-x;cursor:grab;-webkit-mask-image:none;mask-image:none;margin-top:24px}
+.platforms-carousel::-webkit-scrollbar{display:none}
+.platforms-sequence{display:flex;align-items:stretch;gap:18px;width:max-content;max-width:none;padding:12px 30px 24px}
+.platform-logo-item{flex:0 0 var(--platform-width,190px);min-width:var(--platform-width,190px);width:var(--platform-width,190px);height:148px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 14px;position:relative;background:#fff;border:1px solid #e2e9f2;border-radius:16px;box-shadow:0 9px 25px #0e24470a;transition:border-color .2s,background-color .2s,transform .2s}
+.platform-logo-item:hover,.platform-logo-item:focus-visible{background:#fff;border-color:#fea200;transform:translateY(-2px)}
+.platform-logo-item img{display:block;position:static;margin:0;max-width:94%;width:100%;height:65px;max-height:65px;object-fit:contain;opacity:1;filter:none;transform:none}
+.platform-logo-item:hover img,.platform-logo-item:focus-visible img{opacity:1;filter:none;transform:none}
+.platform-caption{font-size:11px;font-weight:750;line-height:1.2;color:#415673;text-align:center;white-space:normal}
+.platforms-hint{color:#60718a;text-align:center;margin-top:12px}
+.maxplayer-wrapper{background:linear-gradient(125deg,#f3f8ff,#e7f2ff);border:1px solid #d6e4f4;box-shadow:0 15px 40px #09274b0a}
+.maxplayer-copy h2,.maxplayer-copy strong{color:#061d40}
+.maxplayer-copy>p:not(.kicker):not(.maxplayer-notice){color:#49617b}
+.maxplayer-label{color:#b67600}
+.maxplayer-capabilities span{background:#fff;color:#143a68;border:1px solid #d6e4f4}
+.maxplayer-mark{background:#03183e;border-color:#fea200}
+.maxplayer-glow{background:radial-gradient(circle,#fea20027,transparent 68%)}
+.maxplayer-actions .btn-primary{background:#fea200;color:#061b3e}
+.maxplayer-actions .btn-plain{background:#fff;border-color:#bdcfe3;color:#123965}
+.maxplayer-copy .maxplayer-notice{color:#5b6f88}
+.pricing-section{background:#fff}
+.price-card{background:#fff;border:1px solid #dde7f1;box-shadow:0 13px 32px #122b480a}
+.price-card.featured,.price-card.highlight{border-color:#fea200;background:#fffdf8}
+.price-top{color:#103259}
+.price-pill{background:#ffe8b8;color:#583704}
+.price-pill.outlined{background:#edf4ff;color:#224567}
+.price-value{color:#08274e}
+.price-value>span{color:#d88900}
+.price-card>p,.pricing-footnote{color:#586b82}
+.button.primary{background:#fea200;color:#061b3e}
+.button.primary:hover{background:#ffb629}
+.button.outline{background:#fff;border:1px solid #ccd9e7;color:#163961}
+.button.outline:hover{background:#edf6ff;border-color:#fea200}
+.button.ghost{background:transparent;color:#0c2a55;border-color:#b4c6d8}
+.button.dark{background:#03183e;color:#fff}
+.button.dark:hover{background:#12457d}
+.faqs{background:#f6f9fd}
+.faq-list,.faq-list details{border-color:#dce6ef}
+.faq-list summary{color:#0b2a56}
+.faq-list summary span{border-color:#cbd8e9;color:#c17b00}
+.cta-section{background:linear-gradient(110deg,#fff3d7,#ffe5b3);border:1px solid #ffd68e;color:#071c3e;min-height:300px}
+.cta-content h2 span,.cta-content .eyebrow{color:#b66e00}
+.cta-content>p:not(.eyebrow):not(.contact-status){color:#4e5260}
+.cta-ring{right:-135px;top:-160px;width:520px;height:520px;border-color:#fea20024;box-shadow:0 0 0 35px #fea20012,0 0 0 77px #fea2000c}
+.contact-status{color:#715421}
+.footer{background:#03183e;color:#fff;border-top:0}
+.footer .site-brand,.footer-inner nav,.footer-inner nav a{color:#f8fbff}
+.footer-inner>p{color:#c5d3e4}
+.legal-main{padding-block:60px 85px}
+.legal-main h1{color:#09254d}
+.legal-intro,.legal-body p{color:#596c83}
+.legal-body{background:#fff;border-color:#e2e9f3}
+.legal-body section{border-color:#e2e9f3}
+.legal-body h2{color:#0c315c}
+.instagram-float{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:10px;padding:12px 15px;background:#03183e;color:white;font-weight:800;font-size:12px;line-height:1;border:1px solid #173d72;border-radius:999px;box-shadow:0 10px 36px #041a4152;transition:transform .2s,background-color .2s}
+.instagram-float:hover{background:#123c71;transform:translateY(-3px)}
+.instagram-float svg{flex:none;stroke:#fea200}
+@media(max-width:830px){.header .nav{background:#fff;border-color:#e5ebf3;box-shadow:0 20px 30px #0b214027}.nav a{color:#092549}
+ .hero.hero-fullbleed{min-height:0;grid-template-columns:1fr;gap:12px;padding:70px max(20px,5vw) 50px}
+ .hero-art{height:clamp(360px,50vw,520px)}.label-two{right:8%}.label-three{left:11%}
+ .platforms-sequence{gap:12px}
+ .section{min-height:auto;padding-block:75px}
+}
+@media(max-width:540px){.hero.hero-fullbleed{padding:62px 20px 42px;gap:6px;background-position:center center}.hero h1{letter-spacing:-.055em}
+.hero-art{height:330px}.hero-art .main-logo{height:95%;max-height:310px}
+.label-one{left:0;top:22%}.label-two{right:0;bottom:20%}.label-three{left:3%;bottom:10%}
+.floating-label{font-size:8px;padding:8px 10px}
+.header-cta{padding:8px 10px;font-size:11px}
+.section{padding-block:60px}
+.stream-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.stream-card{padding:7px;min-height:90px}
+.platform-logo-item{height:130px}.platform-logo-item img{height:55px}
+.cta-ring{opacity:.4}
+.instagram-float{right:14px;bottom:14px;padding:12px}.instagram-float span{display:none}
+}
+@media(prefers-reduced-motion:reduce){.platform-logo-item,.instagram-float{transition:none}.platform-logo-item:hover,.instagram-float:hover{transform:none}}
+/* Final visual alignment of decorative chips: clear the brand wordmark. */
+@media (min-width:831px) {
+  .hero-art .label-two{right:-1%;bottom:4%}
+  .hero-art .label-three{left:2%;bottom:5%}
+}
+@media (max-width:830px) {
+  .hero-art .main-logo{transform:translateY(-20px)}
+  .hero-art .floating-label{top:auto!important;bottom:0!important;transform:none!important}
+  .hero-art .label-one{left:0!important;right:auto!important}
+  .hero-art .label-three{left:34%!important;right:auto!important}
+  .hero-art .label-two{left:auto!important;right:0!important}
+}
+@media (max-width:540px) {
+  .hero-art{height:345px}
+  .hero-art .main-logo{height:95%;max-height:305px;transform:translateY(-22px)}
+  .hero-art .floating-label{font-size:7px;letter-spacing:.35px;padding:7px 6px}
+}
+
+
+/* v10 — conteúdo centrado nos saltos do menu; transição FAQ/CTA limpa. */
+@media(min-width:831px){
+  .section{min-height:calc(100svh - var(--plum-header-height));display:flex;flex-direction:column;justify-content:center}
+  #streaming,#dispositivos,#max-player{min-height:calc(100svh - var(--plum-header-height))}
+}
+.faqs{background:#fff!important;border-top:1px solid #e8edf4;border-bottom:1px solid #e8edf4;box-shadow:none!important}
+.faq-list{border-top:1px solid #dbe4ef}
+.faq-list details{background:#fff}
+.faq-list details:hover{background:#f9fbff}
+.cta-section{margin-top:24px}
+.stream-card img{background:transparent;max-width:100%;width:100%;height:auto;object-fit:contain}
+.platform-logo-item img{width:100%;max-width:94%;object-fit:contain}
+@media(max-width:830px){.section{min-height:auto}.cta-section{margin-top:16px}}
+
+/* v11: fontes originais recuperadas sem modificar os outros componentes aprovados. */
+.hero-buttons .button {flex:0 0 auto; width:max-content; max-width:100%; min-height:50px; gap:0; padding:0 18px; white-space:nowrap;}
+@media (max-width:540px) {
+  .hero-buttons .button{width:max-content; max-width:100%; padding-inline:17px; min-height:47px;}
+  .hero-buttons{gap:10px;}
+}
+#streaming .stream-card{position:relative}
+#streaming .stream-card img{display:block;object-fit:contain;width:100%;height:auto;aspect-ratio:16 / 9;background:transparent;}
+#streaming .stream-name-fallback {display:none; text-align:center; font-weight:800; color:#33496a;font-size:14px;}
+#streaming .stream-card.original-unavailable .stream-name-fallback{display:block}
+#streaming .stream-card.original-unavailable{min-height:125px;}
+#dispositivos .platform-logo-item img {width:auto;height:auto;max-width:86%;max-height:65px;object-fit:contain;filter:grayscale(1);opacity:.64;transition:filter .22s,opacity .22s,transform .22s;}
+#dispositivos .platform-logo-item:hover img, #dispositivos .platform-logo-item:focus-visible img{filter:none;opacity:1;transform:scale(1.025)}
+#dispositivos .platform-logo-item.original-unavailable .platform-caption{display:block}
+@media (max-width:540px){#dispositivos .platform-logo-item img{max-height:57px;}}
+@media(prefers-reduced-motion:reduce){#dispositivos .platform-logo-item:hover img{transform:none;}}
+
+
+/* v12 — equal-size carousel graphics and baseline-aligned captions; original brand assets retained. */
+#dispositivos .platform-logo-item{
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:148px;
+  gap:8px;
+  padding:16px 14px 12px;
+}
+#dispositivos .platform-logo-visual{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 66px;
+  width:100%;
+  height:66px;
+  min-height:66px;
+  position:relative;
+}
+#dispositivos .platform-logo-visual img{
+  display:block;
+  position:static;
+  flex:none;
+  margin:0;
+  width:146px;
+  height:62px;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center;
+  filter:grayscale(1);
+  opacity:.72;
+  transform:scale(var(--logo-scale,1));
+  transform-origin:center;
+  transition:filter .22s,opacity .22s,transform .22s;
+}
+#dispositivos .platform-logo-item:hover .platform-logo-visual img,
+#dispositivos .platform-logo-item:focus-visible .platform-logo-visual img{
+  filter:none;
+  opacity:1;
+  transform:scale(calc(var(--logo-scale,1) * 1.025));
+}
+#dispositivos .platform-caption{
+  width:100%;
+  display:flex;
+  flex:0 0 32px;
+  min-height:32px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:11px;
+  line-height:1.25;
+  font-weight:750;
+  margin:0;
+  padding:0;
+}
+/* Calibrate the visual mark instead of applying identical zoom to source images
+   with different embedded margins. The accessible title and original image stay intact. */
+#dispositivos [data-platform="windows"]{--logo-scale:1.37}
+#dispositivos [data-platform="iphone-e-ipad"]{--logo-scale:1.35}
+#dispositivos [data-platform="celular-android"]{--logo-scale:.94}
+#dispositivos [data-platform="mag-box"]{--logo-scale:1.06}
+#dispositivos [data-platform="apple-tv"]{--logo-scale:1.01}
+#dispositivos [data-platform="roku"]{--logo-scale:1.16}
+#dispositivos [data-platform="amazon-fire-tv"]{--logo-scale:1.16}
+#dispositivos [data-platform="android-tv"]{--logo-scale:1.13}
+#dispositivos [data-platform="lg-webos"]{--logo-scale:1.12}
+#dispositivos [data-platform="samsung-smart-tv"]{--logo-scale:1.12}
+@media(max-width:540px){
+  #dispositivos .platform-logo-item{height:130px;padding:10px 12px;gap:5px}
+  #dispositivos .platform-logo-visual{height:60px;min-height:60px;flex-basis:60px}
+  #dispositivos .platform-logo-visual img{width:140px;height:57px;max-height:100%}
+  #dispositivos .platform-caption{font-size:10.5px;line-height:1.2;min-height:30px;flex-basis:30px}
+}
+@media(prefers-reduced-motion:reduce){
+  #dispositivos .platform-logo-item:hover .platform-logo-visual img,
+  #dispositivos .platform-logo-item:focus-visible .platform-logo-visual img{transform:scale(var(--logo-scale,1));}
+}
+
+/* v12 — preserve actual 16:9 streaming artwork, without a white card-within-card mat. */
+#streaming .stream-grid .stream-card{
+  display:block;
+  position:relative;
+  min-height:0;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  background:#fff;
+  border:0;
+  border-radius:14px;
+  box-shadow:0 9px 25px #102b5414;
+}
+#streaming .stream-grid .stream-card img{
+  display:block;
+  width:100%;
+  max-width:none;
+  height:100%;
+  max-height:none;
+  aspect-ratio:auto;
+  object-fit:cover;
+  object-position:center;
+  background:transparent;
+  border:0;
+  border-radius:0;
+}
+#streaming .stream-grid .stream-card.original-unavailable{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:0;
+}
+#streaming .stream-grid .stream-card.original-unavailable .stream-name-fallback{
+  padding:8px;
+}
+
+/* v12 — 03 Destaques uses the exact visual color language of 01 Programação. */
+#conteudos .card-icon, .special-section .special-symbol{
+  background:#fff7e7;
+  color:#da8a00;
+  border:1px solid #ffe0a4;
+}
+#conteudos .card-icon svg, .special-section .special-symbol svg{color:#da8a00}
+
+/* MaxPrism v13 — esclarecimento da economia sem preço anterior riscado. */
+.price-card .price-savings{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-height:0;margin:0 0 9px}
+.price-card .price-savings .saving-badge{align-self:flex-start}
+.price-savings-reference,.price-savings-detail{display:block;max-width:100%;color:#596d82;font-size:clamp(10px,.70vw,12px);line-height:1.42;font-weight:500}
+.price-savings-detail{color:#244767}
+/* Aviso não modal: não altera layout dos cards nem o botão flutuante do Instagram. */
+.plan-copy-feedback[hidden],.plan-copy-manual[hidden]{display:none!important}
+.plan-copy-feedback{position:fixed;z-index:90;bottom:20px;left:20px;max-width:min(410px,calc(100vw - 40px));padding:15px 42px 15px 17px;border:1px solid #d1ddeb;border-radius:12px;background:#fff;color:#08274e;box-shadow:0 10px 34px #041b3e32;font-size:13px;line-height:1.5}
+.plan-copy-feedback-text{margin:0;font-weight:700}
+.plan-copy-dismiss{position:absolute;right:10px;top:8px;border:0;background:transparent;color:#456381;cursor:pointer;font-size:23px;line-height:1;padding:4px 7px;border-radius:5px}
+.plan-copy-dismiss:hover{background:#eef4fa}
+.plan-copy-manual{margin-top:10px;display:flex;flex-direction:column;gap:7px}
+.plan-copy-manual label{color:#385675;font-size:12px}
+.plan-copy-manual textarea{width:100%;max-height:125px;resize:vertical;background:#f8fbff;color:#08274e;border:1px solid #bfcfe1;border-radius:7px;font:12px/1.5 'DM Sans',system-ui,sans-serif;padding:9px;user-select:text}
+.plan-copy-manual-button{align-self:flex-start;border:1px solid #c8d6e5;background:#fff;color:#123b68;padding:7px 10px;border-radius:7px;cursor:pointer;font-weight:700;font-size:12px}
+.plan-copy-manual-button:hover{background:#eff6fd}
+@media(max-width:540px){.price-savings-reference,.price-savings-detail{font-size:11px}.plan-copy-feedback{bottom:12px;left:12px;max-width:calc(100vw - 24px)}}
+
+/* v14 — política de reembolso: cartões claros e legíveis na paleta MaxPrism. */
+.legal-main {padding-top:clamp(44px,5.5vw,78px); padding-bottom:clamp(56px,6vw,88px)}
+.legal-main .eyebrow {color:#b46d00}
+.legal-main h1 {color:#082347}
+.legal-intro {color:#4a607c; font-size:clamp(14px,1vw,16px);line-height:1.75}
+.legal-body {background:transparent;border:0;gap:13px}
+.legal-body section {background:#f6f9fd;border:1px solid #dde6f0;border-left:4px solid #fea200;border-radius:13px;box-shadow:0 6px 18px rgba(3,24,62,.035);padding:24px 27px}
+.legal-body h2 {color:#0b2b57;font-size:clamp(17px,1.3vw,20px);line-height:1.3;margin-bottom:10px}
+.legal-body p {color:#435b79;font-size:clamp(13px,.94vw,15px);line-height:1.78;margin:0}
+.legal-end {align-items:center}
+.legal-end .button.ghost {background:#fff;border-color:#c4d3e6;color:#0a2953}
+.legal-end .button.ghost:hover {border-color:#efa400;background:#fffaf0}
+/* Rodapé simples: política e contato, sem duplicar a navegação superior. */
+.footer-inner nav {align-items:center}
+.footer-inner nav a:focus-visible {outline:2px solid #fea200;outline-offset:5px;border-radius:3px}
+@media(max-width:540px) {
+ .legal-main {padding-top:42px;padding-bottom:60px}
+ .legal-body section {padding:21px 19px}
+ .legal-end .button {width:100%}
+ .footer-inner nav {gap:17px}
+}
+
+/* Botão de retorno alinhado à direita no cabeçalho da página legal. */
+.legal-page .header-cta{margin-left:auto}
+
+
+/* v15 — identidade MaxPrism, placeholder do hero e refinamentos de seleção/alinhamento. */
+.site-brand img{object-fit:contain;border-radius:0;display:block}
+.no-select{-webkit-user-select:none;user-select:none}
+.hero-art-placeholder{display:flex;align-items:center;justify-content:center}
+.hero-image-placeholder{width:min(100%,485px);height:min(100%,485px);max-height:100%;border-radius:28px;border:1px dashed #cad7e7;background:linear-gradient(180deg,#ffffff 0%,#f4f8fd 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),0 14px 38px rgba(3,24,62,.08);position:relative;overflow:hidden}
+.hero-image-placeholder::before{content:"Área reservada para imagem";position:absolute;inset:0;display:grid;place-items:center;padding:22px;color:#8ba0bc;font-size:clamp(13px,1.1vw,16px);font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-align:center}
+.hero-image-placeholder::after{content:"";position:absolute;inset:18px;border-radius:20px;border:1px dashed rgba(3,24,62,.12)}
+.stream-more{display:flex;align-items:center}
+.stream-more .plus{display:grid;place-items:center;align-self:center}
+.stream-more .plus svg{margin:0}
+.stream-more-copy{display:flex;flex-direction:column;justify-content:center;gap:3px;min-height:44px}
+.stream-more-copy strong,.stream-more-copy p{margin:0}
+@media(max-width:830px){.hero-image-placeholder{width:min(100%,430px);height:min(100%,430px)}}
+@media(max-width:540px){.hero-image-placeholder{width:min(100%,305px);height:min(100%,305px);border-radius:24px}.hero-image-placeholder::before{padding:18px;font-size:11px;letter-spacing:.05em}.hero-image-placeholder::after{inset:14px;border-radius:17px}}
+
+
+/* v17 — dispositivo real no hero. Mantém a área e o layout aprovados. */
+.hero-devices-art{display:flex;align-items:center;justify-content:center;min-width:0;overflow:visible}
+.hero-devices-image{display:block;width:100%;max-width:680px;height:auto;max-height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 18px 24px rgba(0,8,27,.24));user-select:none;-webkit-user-select:none;pointer-events:none}
+/* Retorno ao topo no rodapé, dentro da identidade atual. */
+.footer-inner nav a[href="#inicio"]{white-space:nowrap}
+@media(max-width:830px){.hero-devices-art{height:clamp(290px,52vw,450px)}.hero-devices-image{max-width:650px}}
+@media(max-width:540px){.hero-devices-art{height:clamp(245px,83vw,355px)}.hero-devices-image{max-width:100%;filter:drop-shadow(0 12px 16px rgba(0,8,27,.22))}}

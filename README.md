@@ -1,49 +1,69 @@
-# PlumPlay — Landing page
+# MaxPrism — histórico de atualizações (v11 a v14) — imagens originais e botões ajustados
 
-Landing page estática responsiva para a marca PlumPlay.
+Base: MaxPrism v10. A navegação, FAQ, cores, valores, links de lojas e Instagram permanecem inalterados.
 
-## Antes de divulgar
+## Corrigido
 
-1. Defina o número de atendimento em `assets/config.js` (apenas DDI + DDD + número, sem símbolos). Botões de contratar/testar só abrirão o WhatsApp após essa configuração.
-2. Confirme as condições comerciais, os direitos de distribuição do conteúdo anunciado e o uso autorizado de marcas e imagens. Logos de terceiros não indicam parceria ou licença.
-3. Revise a minuta `reembolso.html` para refletir seu procedimento real e as exigências legais; não retenha automaticamente R$5 em pedidos de arrependimento legal de até sete dias.
-4. Valide a compatibilidade real do Max Player com seus dispositivos de clientes e confirme as orientações de instalação.
+- Streaming: os **10 arquivos `.webp` originais do repositório `SimsReaper/PP`**, sob `assets/streaming/`, são exibidos via URLs públicas da origem (sem reconstruções SVG feitas na v10).
+- Dispositivos: os **10 arquivos de imagens do HTML original do MaxPlayer** foram recuperados dos URLs fornecidos no próprio trecho, inclusive a arte Google Play para Android Mobile. Cada card mantém seu link específico de loja; Apple TV e iPhone continuam distintos.
+- Botões do banner: removida a largura excessiva e reduzido o preenchimento horizontal, com largura ajustada ao texto; em celular não forçam largura total.
+- Carrossel: uma ocorrência por plataforma, sem duplicações visíveis (o mecanismo da v10 foi preservado).
 
-## Arquivos
+## Funcionamento das imagens
 
-- `index.html`: página principal com conteúdos, imagens fornecidas, dispositivos, Max Player, plano mensal de R$30 e teste grátis de 4 horas.
-- `reembolso.html`: política de cancelamento e reembolso (minuta para revisão).
-- `assets/config.js`: WhatsApp.
-- `assets/styles.css`: estilos e scrollbar Fluent inspirada no Edge, em laranja.
-- `assets/app.js`: menu móvel e links de atendimento.
-- `assets/plumplay-logo.webp`: logo do PlumPlay fornecida pelo usuário.
-- `assets/maxplayer-logo.png`: logo original MaxPlayer enviada pelo usuário, preservada como referência.
-- `assets/maxplay-icon-fallback.svg`: símbolo laranja isolado da marca para exibição imediata se o ícone de alta resolução remoto não carregar.
-- `assets/streaming/*.webp`: **as dez imagens enviadas pelo usuário**, ajustadas por recorte centrado proporcional, sem deformação.
+Por padrão, o `index.html` carrega os arquivos originais **pela internet** (repositório GitHub e site MaxPlayer). Isso significa que abrir o HTML localmente com acesso à internet exibe as marcas originais. Em caso de falha, o nome permanece legível, sem imagens inventadas.
 
-## Hospedagem
+**Para baixar os 20 arquivos originais e tornar essa parte do site independente desses servidores:** no Windows execute `baixar_imagens_originais.bat` na pasta extraída. O script utiliza as mesmas URLs auditadas para obter os arquivos binários e modifica APENAS os caminhos das imagens que foram baixadas com sucesso para usar o diretório local. Verifique as mensagens para eventuais falhas. Não use este script se não deseja baixar imagens de terceiros.
 
-Pode-se guardar o código no GitHub. **GitHub Pages pode restringir hospedagem de sites cuja finalidade principal seja conduzir negócios ou transações comerciais**: confirme as condições vigentes antes de habilitar o serviço. Para uma landing page de vendas, considere provedor de hospedagem comercial que permita esse uso.
+Ao publicar no GitHub/Cloudflare Pages, prefira o site com os arquivos baixados localmente, reduzindo a dependência dos servidores externos. Isso não altera as regras de permissão de uso das marcas ou direitos de distribuição de conteúdo.
 
-O GitHub Pages não é ativado automaticamente por estes arquivos: quando permitido, ajuste a publicação no repositório em **Settings → Pages**.
-
-## Direitos
-
-Os arquivos de marcas de terceiros permanecem pertencentes aos respectivos titulares. O uso das imagens, a oferta e a retransmissão de conteúdo requerem as permissões e licenças aplicáveis.
+Nenhum arquivo anterior (v9/v10) foi sobrescrito por essa entrega.
 
 
-## Revisão visual v3
-- CTA final restaurado para “Seu próximo programa começa aqui.”
-- Programação: quatro ícones SVG semânticos; Destaques: claquete, troféu e câmera.
-- Ícones de “+” em SVG centralizados e não selecionáveis.
-- MaxPlay: estrutura integral do bloco V6 (arte, brilhos, selos e dois botões), com ícone fornecido via URL e fallback vetorial local.
-- Planos: Mensal, Trimestral, Semestral e Teste gratuito nessa ordem; quatro colunas no desktop, duas no tablet e uma no celular.
-- O número do WhatsApp continua pendente em assets/config.js.
-- A imagem externa MaxPlay requer conexão; a arte local é fallback derivado da logo anteriormente enviada.
+## v12 — proporções, legendas e cores
 
-- Descontos exibidos como comparações com pagamentos mensais: trimestral R$85 (R$5 de economia); semestral R$160 (R$20 de economia).
+- Carrossel: as dez marcas originais têm uma área visual fixa de 66px e uma legenda com área fixa de 32px, com centralização consistente entre cartões. Ajustes individuais para as diferentes margens embutidas nas imagens originais (Windows, App Store, Google Play etc.). As fontes e os links para as lojas foram preservados.
+- Streaming: o padding branco interno e a borda dos cartões foram removidos; as imagens originais 16:9 ocupam toda a área do cartão, preservando os cantos arredondados.
+- Destaques: cores do fundo, contorno e ícone igualadas às usadas em 01 / Programação (`#fff7e7`, `#ffe0a4`, `#da8a00`).
+- Mantidos os demais elementos da v11, incluindo o FAQ, os preços, o Instagram, o banner e o controle de rolagem do carrossel.
 
-## Revisão v5 — responsividade e ícone diagonal
-- Seções principais com altura mínima da viewport disponível, conteúdo centrado verticalmente e expansão natural quando necessário; CTA final permanece no formato compacto aprovado.
-- Tamanhos de títulos/cards escaláveis para notebooks e monitores; sem rolagem horizontal involuntária.
-- Em `04 / APLICATIVO UTILIZADO`, o símbolo laranja ocupa visualmente o quadrado inclinado, sem a antiga compensação de rotação. A URL do ícone enviada pelo usuário é usada quando disponível, com SVG local visível imediatamente como reserva.
+As imagens originais do GitHub e do MaxPlayer continuam remotas por padrão, como na v11; para baixar cópias locais use `baixar_imagens_originais.bat` no Windows. Os direitos de marca e imagem permanecem com os titulares.
+
+## v13 — planos, comparações e mensagens do Direct
+
+- Mensal: R$ 30,00 por 30 dias. Trimestral: R$ 80,00 por 90 dias; economia R$ 10,00 (11,1% vs três pagamentos mensais), equivalente a R$ 26,67/mês. Semestral: R$ 150,00 por 180 dias; economia R$ 30,00 (16,7% vs seis pagamentos mensais), equivalente a R$ 25,00/mês. Teste grátis: 4 horas.
+- A comparação com mensalidades avulsas é explicada sem tachar qualquer preço.
+- Os quatro botões mantêm aparência e rótulos originais, abrem `https://ig.me/m/friendsjfas` e tentam copiar a mensagem específica para a área de transferência. Não enviam mensagens automaticamente.
+- Se a cópia falhar, um aviso discreto mostra a mensagem para seleção manual. O botão flutuante do Instagram, demais seções e página de reembolso permanecem inalterados.
+- Arquivos de código alterados: `index.html`, `assets/styles.css`, `assets/app.js`. `README.md` foi atualizado apenas para documentar a mudança.
+
+
+## v14 — nome MaxPrism, política e rodapé
+
+- Nome exibido e metadados passam de PlumPlay para MaxPrism, incluindo as mensagens dos quatro botões de planos; o Instagram permanece `@friendsjfas`.
+- A página de cancelamento e reembolso passou a ter cartões claros e tipografia em azul-marinho com contraste legível. Nenhuma condição ou valor de reembolso foi alterado.
+- Rodapé da página principal simplificado para Instagram e Cancelamento e reembolso. O restante dos links continua na navegação do site.
+- Cabeçalho da página de política simplificado para a marca e o botão Voltar ao site.
+- **Logo provisória:** os arquivos gráficos originais e os respectivos caminhos (`assets/plumplay-logo.webp`, `assets/favicon.png`, etc.) foram mantidos sem alteração. A logo ainda pode conter o nome antigo na própria imagem até que a nova arte MaxPrism seja fornecida.
+- Mantidos os planos, a interação de cópia + abertura do Direct, o carrossel, os arquivos externos e o restante do layout da v13.
+
+## v16 — política de privacidade dos redirecionamentos
+
+- `index.html` e `reembolso.html`: política global `no-referrer` no documento.
+- Links externos para o MaxPlayer mantêm `rel="noopener noreferrer"` e usam `referrerpolicy="no-referrer"`.
+- Folha `assets/styles.css` é carregada com `referrerpolicy="no-referrer"`; imagens dos dispositivos já usam o mesmo atributo individualmente.
+- `_headers` configura `Referrer-Policy: no-referrer` em todo o site quando publicado no Cloudflare Pages.
+- O site **continua carregando imagens e o fundo da página a partir de servidores externos**; mesmo sem Referer, esses servidores recebem solicitações HTTP e podem observar IP, User-Agent e outras informações técnicas.
+- Para não realizar requisições automáticas ao MaxPlayer ao exibir o site, baixe e hospede as imagens e o fundo localmente, desde que tenha a autorização necessária.
+- Não foram aplicadas ainda as mudanças pendentes do rodapé (Voltar ao topo) nem a remoção de Voltar ao site no cabeçalho da página de reembolso.
+
+- O fundo remoto do banner passou de `assets/styles.css` para uma declaração `style` na seção do banner, preservando exatamente as camadas visuais. Assim a requisição herda a política `no-referrer` do HTML mesmo em hospedagens sem suporte ao `_headers`.
+
+
+## v17 — montagem de dispositivos e navegação
+- No hero, o espaço provisório passou a exibir a montagem enviada pelo usuário, recortada somente no entorno transparente, com transparência preservada e compactada em WebP de alta qualidade, e salva em `assets/maxprism-dispositivos.webp`. A grade, cores, textos e CTA permanecem iguais.
+- O rodapé principal recupera o atalho **Voltar ao topo ↑**.
+- Na política de cancelamento e reembolso, o botão redundante **Voltar ao site** foi retirado do cabeçalho; o logotipo ainda leva à página inicial e o botão de retorno no corpo permanece. O rodapé da política também apresenta **Voltar ao topo ↑**.
+- `og:image` aponta para a logo atual MaxPrism em vez do logo antigo PlumPlay.
+- A proteção `Referrer-Policy: no-referrer` da v16 permanece, incluindo `_headers` e as metatags.
+- Permanecem intactos: identidade visual, ícones, imagens e preços de planos, Direct Instagram `@friendsjfas`, carrossel e mensagens de cópia.
