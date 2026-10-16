@@ -650,3 +650,18 @@ em{color:#de8a00}
 .footer-inner nav a[href="#inicio"]{white-space:nowrap}
 @media(max-width:830px){.hero-devices-art{height:clamp(290px,52vw,450px)}.hero-devices-image{max-width:650px}}
 @media(max-width:540px){.hero-devices-art{height:clamp(245px,83vw,355px)}.hero-devices-image{max-width:100%;filter:drop-shadow(0 12px 16px rgba(0,8,27,.22))}}
+
+
+/* v18.3 — composição alinhada ao centro apenas no celular. O desktop permanece como aprovado. */
+@media (max-width: 540px) {
+  .header .site-brand { gap: 3px; }
+  .hero.hero-fullbleed .hero-copy { width:100%;max-width:100%;text-align:center; }
+  .hero.hero-fullbleed .overline { justify-content:center; }
+  .hero.hero-fullbleed .hero-copy h1 { text-align:center; font-size:clamp(35px,8.65vw,47px); line-height:1.16; }
+  .hero.hero-fullbleed .hero-title-part { display:block; }
+  .hero.hero-fullbleed .hero-title-break { display:none; }
+  .hero.hero-fullbleed .hero-copy > p { margin-inline:auto; }
+  .hero.hero-fullbleed .hero-buttons { justify-content:center; }
+  .hero.hero-fullbleed .hero-points { justify-content:center;column-gap:14px;row-gap:10px; }
+  .hero.hero-fullbleed .hero-devices-art { margin-inline:auto; }
+}

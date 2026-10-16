@@ -87,3 +87,10 @@ As imagens originais do GitHub e do MaxPlayer continuam remotas por padrão, com
 - Recalibrada a largura dos itens para manter a rolagem circular, sem duplicar cartões.
 - Retirados o ajuste visual específico e o download da imagem MAG Box do script Windows. Agora são 19 recursos externos no baixador (10 marcas de streaming + 9 plataformas).
 - Sem alterações de preços, Instagram, outros blocos ou visual geral.
+
+
+## v18.3 — centralização do banner no celular
+- No celular (até 540px), a chamada do hero, título, descrição, botões e marcadores são centralizados.
+- O título passa a ocupar três linhas controladas: “Tudo o que” / “você gosta.” / “Em cada tela.”.
+- A marca no cabeçalho fica mais próxima do nome MaxPrism, com `gap: 3px` no celular.
+- O desktop mantém a apresentação anterior; os componentes, preços e links dos outros blocos permanecem intactos.
