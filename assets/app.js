@@ -11,7 +11,10 @@ document.querySelectorAll('a[href="#inicio"]').forEach(link=>link.addEventListen
 // Center the selected section content in the available viewport below the fixed header.
 function jumpToSection(hash, replace=false, instant=false){
  const id=hash?.slice(1);if(!id)return false;
- const section=document.getElementById(id);if(!section||!section.classList.contains('section'))return false;
+ // O teste faz parte da seção de planos; ambos devem usar o mesmo enquadramento.
+ // A URL mantém #teste, mas sua posição de rolagem é a mesma de #planos.
+ const sectionId=id==='teste'?'planos':id;
+ const section=document.getElementById(sectionId);if(!section||!section.classList.contains('section'))return false;
  const header=document.querySelector('.header');const headerH=header?header.getBoundingClientRect().height:0;
  let blocks=Array.from(section.children).filter(el=>el.getClientRects().length && !el.classList.contains('platforms-hint'));
  if(blocks.length===0)blocks=[section];

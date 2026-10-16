@@ -74,3 +74,9 @@ As imagens originais do GitHub e do MaxPlayer continuam remotas por padrão, com
 - Removido `background:#051c40` do seletor `.site-brand img`; a marca tem fundo transparente.
 - Favicon PNG quadrado (512 × 512) e ICO com o símbolo laranja centralizado mantendo proporção original, sem esticar nem achatar.
 - Cabeçalho e rodapé usam o ícone quadrado proporcional com transparência.
+
+## v18.1 — alinhamento da seção de planos
+
+- O atalho “Teste gratuito de 4h” mantém `#teste` no endereço, mas centraliza a seção inteira em `#planos` exatamente como o botão “Conhecer planos”.
+- Corrige também a abertura direta de `index.html#teste` e a navegação de histórico, sem alterar estilos ou demais links.
+- Arquivo funcional modificado: `assets/app.js`.
