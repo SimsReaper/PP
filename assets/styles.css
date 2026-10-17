@@ -665,3 +665,62 @@ em{color:#de8a00}
   .hero.hero-fullbleed .hero-points { justify-content:center;column-gap:14px;row-gap:10px; }
   .hero.hero-fullbleed .hero-devices-art { margin-inline:auto; }
 }
+
+
+/* v19 — Destaques usa exatamente a paleta dos cartões de Programação. */
+.special-section .special-card {
+  background:#fff;
+  border:1px solid #e3e9f1;
+  box-shadow:0 12px 30px #081e3d09;
+}
+
+/* v19 — Centraliza valores, descrições e economia sem alterar os títulos e CTAs. */
+.pricing-section .price-card .price-value { text-align:center; }
+.pricing-section .price-card > p { text-align:center; margin-left:auto; margin-right:auto; }
+.pricing-section .price-card .price-savings { align-items:center; text-align:center; }
+.pricing-section .price-card .price-savings .saving-badge { align-self:center; }
+
+/* v19 — Duas fileiras centralizadas, com 3 + 2 dispositivos em todas as telas. */
+.maxplayer-capabilities {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+}
+.maxplayer-capability-row {
+  display:flex;
+  flex-wrap:nowrap;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  width:100%;
+}
+.maxplayer-capability-row span { display:inline-flex; justify-content:center; align-items:center; text-align:center; white-space:nowrap; }
+
+/* v19 — No mobile, a marca fica abaixo do título do aplicativo.
+   O layout desktop (imagem ao lado do texto) permanece como estava. */
+@media (max-width:830px) {
+  .maxplayer-wrapper { display:flex; flex-direction:column; align-items:stretch; }
+  .maxplayer-copy { display:contents; }
+  .maxplayer-copy > .kicker { order:1; }
+  .maxplayer-copy > .maxplayer-label { order:2; }
+  .maxplayer-copy > h2 { order:3; }
+  .maxplayer-wrapper > .maxplayer-art { order:4; width:100%; margin:0 auto 7px; }
+  .maxplayer-copy > p:not(.kicker):not(.maxplayer-notice) { order:5; }
+  .maxplayer-copy > .maxplayer-capabilities { order:6; }
+  .maxplayer-copy > .maxplayer-actions { order:7; }
+  .maxplayer-copy > .maxplayer-notice { order:8; }
+}
+@media (max-width:540px) {
+  .maxplayer-capabilities { gap:8px; margin:21px 0; }
+  .maxplayer-capability-row { gap:clamp(4px,1.5vw,8px); }
+  .maxplayer-capability-row span { font-size:clamp(9px,2.5vw,11px); padding:7px clamp(5px,1.4vw,9px); }
+  .maxplayer-wrapper > .maxplayer-art { min-height:clamp(205px,60vw,255px); margin-block:0 12px; }
+}
+
+
+/* v19 — Habilita a rolagem nativa suave no iOS sem desativar o autoplay. */
+@media (hover:none) and (pointer:coarse) {
+  .platforms-carousel { cursor:auto; -webkit-overflow-scrolling:touch; touch-action:pan-x pan-y; }
+}

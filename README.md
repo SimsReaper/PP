@@ -94,3 +94,20 @@ As imagens originais do GitHub e do MaxPlayer continuam remotas por padrão, com
 - O título passa a ocupar três linhas controladas: “Tudo o que” / “você gosta.” / “Em cada tela.”.
 - A marca no cabeçalho fica mais próxima do nome MaxPrism, com `gap: 3px` no celular.
 - O desktop mantém a apresentação anterior; os componentes, preços e links dos outros blocos permanecem intactos.
+
+
+## v19 — streaming, destaques, planos e MaxPlayer
+
+- Logos do streaming reordenados: Netflix, Prime Video, HBO Max, Disney+, Apple TV+, Paramount+, Crunchyroll, Globoplay, Telecine Play e Premiere. Os três últimos formam o grupo solicitado.
+- Cartões de `03 / Destaques` recebem exatamente a cor branca, borda e sombra dos cartões de `01 / Programação`.
+- Preço e descrições dos quatro planos são centralizados; dados de economia seguem a mesma orientação.
+- Todos os textos de apresentação do aplicativo usam o nome correto `MaxPlayer` (sem alterar endereços externos).
+- Na visualização mobile, a logo do MaxPlayer aparece imediatamente abaixo do título “Assista pelo MaxPlayer.”, preservando o layout desktop.
+- Plataformas apresentadas em duas fileiras centralizadas: Android / iPhone e iPad / Windows; Smart TVs / Fire TV / Apple TV.
+- Mantidos os valores, links de atendimento, referências de privacidade e demais componentes.
+
+## v19 — correção adicional do carrossel no celular
+- O carrossel desliza automaticamente também em telas com toque, sem depender do estado `:hover` (que pode ficar ativo no Safari/iOS depois de um toque).
+- Ao arrastar, o movimento automático pausa para respeitar a rolagem do usuário e reinicia após cessar a interação/rolagem inercial.
+- Mantém nove logotipos únicos e rotação circular, sem clones ou mudança nos links.
+- A preferência do sistema por movimento reduzido continua respeitada (sem autoplay quando configurada).

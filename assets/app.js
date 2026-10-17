@@ -93,44 +93,72 @@ document.querySelectorAll('[data-plan-message]').forEach(link=>{
  });
 });
 
-// Circular marquee with *one unique instance of each platform*: no clones visible at any time.
+// Continuous, single-copy platform carousel: autoplay on desktop and touch devices.
+// Manual swipes pause motion while fingers/inertial scrolling are active, then resume.
 const viewport=document.querySelector('.platforms-carousel');
 const track=viewport?.querySelector('.platforms-sequence');
 if(!viewport||!track)return;
-let paused=!motionOK,last=0, frame=0;
+let lastFrame=0;
+let mouseHover=false, keyboardFocus=false, dragging=false;
+let resumeAfter=0;
+let lastInput='';
+const isHoverDevice=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 const visibleItems=track.querySelectorAll('.platform-logo-item');
 function fitToWidth(){
- const w=viewport.clientWidth;const item=Math.max(146,Math.ceil((w+140)/8.55));
+ const w=viewport.clientWidth;
+ const item=Math.max(146,Math.ceil((w+140)/8.55));
  track.style.setProperty('--platform-width',item+'px');
 }
-fitToWidth();window.addEventListener('resize',fitToWidth,{passive:true});
-viewport.addEventListener('mouseenter',()=>paused=true);
-viewport.addEventListener('mouseleave',()=>paused=false);
-viewport.addEventListener('focusin',()=>paused=true);
-viewport.addEventListener('focusout',()=>{if(!viewport.matches(':focus-within'))paused=false});
-viewport.addEventListener('pointerdown',()=>paused=true);
-viewport.addEventListener('pointerup',()=>{if(!viewport.matches(':hover')&&!viewport.matches(':focus-within'))paused=false});
-document.addEventListener('visibilitychange',()=>{last=0});
+fitToWidth();
+window.addEventListener('resize',fitToWidth,{passive:true});
+viewport.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse' && isHoverDevice)mouseHover=true});
+viewport.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')mouseHover=false});
+viewport.addEventListener('keydown',()=>{lastInput='keyboard'});
+viewport.addEventListener('focusin',()=>{if(lastInput!=='touch')keyboardFocus=true});
+viewport.addEventListener('focusout',()=>{if(!viewport.matches(':focus-within'))keyboardFocus=false});
+function startDrag(e){
+ lastInput=e.pointerType||'touch';
+ dragging=true;
+ resumeAfter=Infinity;
+}
+function endDrag(){
+ if(!dragging)return;
+ dragging=false;
+ resumeAfter=performance.now()+1000;
+}
+viewport.addEventListener('pointerdown',startDrag,{passive:true});
+viewport.addEventListener('pointerup',endDrag,{passive:true});
+viewport.addEventListener('pointercancel',endDrag,{passive:true});
+// Safety net for a release outside the carousel on browsers that lack pointer capture.
+window.addEventListener('pointerup',endDrag,{passive:true});
+window.addEventListener('pointercancel',endDrag,{passive:true});
+// iOS Safari may report a sticky :hover after touch; it must never block autoplay.
+viewport.addEventListener('scroll',()=>{
+ if(dragging || (performance.now()<resumeAfter))resumeAfter=performance.now()+950;
+},{passive:true});
+document.addEventListener('visibilitychange',()=>{lastFrame=0});
 function cycle(){
- const first=track.firstElementChild;if(!first)return;
- let size=first.getBoundingClientRect().width;
  const gap=parseFloat(getComputedStyle(track).gap)||0;
- let threshold=size+gap;
  let loops=0;
- while(viewport.scrollLeft>=threshold-0.5&&loops++<visibleItems.length){
-  viewport.scrollLeft-=threshold;track.append(first);
-  const f=track.firstElementChild;threshold=f.getBoundingClientRect().width+gap;
+ // Re-read the first child after every rotation (don't rotate the same node twice).
+ while(loops++ < visibleItems.length){
+  const first=track.firstElementChild;
+  if(!first)break;
+  const stepSize=first.getBoundingClientRect().width+gap;
+  if(stepSize<=0 || viewport.scrollLeft < stepSize-0.5)break;
+  viewport.scrollLeft-=stepSize;
+  track.append(first);
  }
 }
-function step(time){
- if(!last)last=time;
- let dt=Math.min(45,time-last);last=time;
- if(motionOK&&!paused&&!document.hidden){
+function step(t){
+ if(!lastFrame)lastFrame=t;
+ const dt=Math.min(45,t-lastFrame);
+ lastFrame=t;
+ if(motionOK && !document.hidden && !mouseHover && !keyboardFocus && !dragging && t>=resumeAfter){
   viewport.scrollLeft+=dt*.038;
   cycle();
  }
- frame=requestAnimationFrame(step);
+ if(motionOK)requestAnimationFrame(step);
 }
-if(motionOK)frame=requestAnimationFrame(step);
-viewport.addEventListener('scroll',()=>{if(motionOK&&paused)cycle()},{passive:true});
+if(motionOK)requestAnimationFrame(step);
 })();
